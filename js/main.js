@@ -23,7 +23,6 @@ phina.define('MainScene', {
 phina.main(function() {
   // アプリケーション生成
   var app = GameApp({
-    startLabel: 'main', // メインシーンから開始する
     title: 'ゴリラ天国(仮)',
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
