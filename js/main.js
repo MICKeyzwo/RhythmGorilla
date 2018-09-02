@@ -1,6 +1,10 @@
 // phina.js をグローバル領域に展開
 phina.globalize();
-
+var ASSETS = {
+  image: {
+    gorilla: '',
+  }
+}
 var SCREEN_WIDTH = 640;
 var SCREEN_HEIGHT = 380;
 
@@ -21,6 +25,7 @@ phina.main(function() {
     title: 'ゴリラ天国(仮)',
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
+    assets: ASSETS,
   });
   // アプリケーション実行
   app.run();
