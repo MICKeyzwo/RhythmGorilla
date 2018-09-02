@@ -1,6 +1,9 @@
 // phina.js をグローバル領域に展開
 phina.globalize();
 
+var SCREEN_WIDTH = 640;
+var SCREEN_HEIGHT = 380;
+
 // MainScene クラスを定義
 phina.define('MainScene', {
   superClass: 'DisplayScene',
@@ -22,6 +25,8 @@ phina.main(function() {
   var app = GameApp({
     startLabel: 'main', // メインシーンから開始する
     title: 'ゴリラ天国(仮)',
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
   });
   // アプリケーション実行
   app.run();
