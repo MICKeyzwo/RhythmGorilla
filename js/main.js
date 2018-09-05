@@ -25,6 +25,25 @@ phina.define('Gorilla', {
     this.superInit('gorilla', 250, 250);
     this.x = SCREEN_WIDTH / 2;
     this.y = SCREEN_HEIGHT / 2;
+  //エンターキーが押されたときに呼ぶ
+  action: function() {
+    this.tweener
+    .call(function(){
+      this.holdArm();
+    })
+    .wait(30)
+    .call(function(){
+      this.swingDownArm();
+    })
+    .wait(30)
+    .call(function(){
+      this.swingDownArm();
+    })
+    .wait(30)
+    .call(function(){
+      toNormalState();
+    });
+  },
   }
 });
 
