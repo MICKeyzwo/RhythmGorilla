@@ -25,6 +25,11 @@ phina.define('Gorilla', {
     this.superInit('gorilla', 250, 250);
     this.x = SCREEN_WIDTH / 2;
     this.y = SCREEN_HEIGHT / 2;
+    this.state = 0;//　0:通常状態
+  },
+  update: function(){
+
+  },
   //エンターキーが押されたときに呼ぶ
   action: function() {
     this.tweener
@@ -52,6 +57,8 @@ phina.define('Gorilla', {
   swingDownArm: function() {
     //ゴリラの画像を帰る
   },
+  toNormalState: function() {
+    this.state = 0; //通常状態にもどる
   }
 });
 
