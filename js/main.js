@@ -44,6 +44,14 @@ phina.define('Gorilla', {
       toNormalState();
     });
   },
+  //ゴリラが腕をふりかぶる
+  holdArm: function() {
+    //ゴリラの画像をかえる
+  },
+  //ゴリラが腕を振り下ろす
+  swingDownArm: function() {
+    //ゴリラの画像を帰る
+  },
   }
 });
 
