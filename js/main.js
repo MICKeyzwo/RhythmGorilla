@@ -25,10 +25,13 @@ phina.define('Gorilla', {
     this.superInit('gorilla', 250, 250);
     this.x = SCREEN_WIDTH / 2;
     this.y = SCREEN_HEIGHT / 2;
-    this.state = 0;//　0:通常状態
+    this.state = 0;//　0:通常状態 1:アクション中
   },
   update: function(){
-
+    //通常状態
+    if(this.state == 0){
+      //リズムにのるゴリラ
+    }
   },
   //エンターキーが押されたときに呼ぶ
   action: function() {
@@ -51,6 +54,7 @@ phina.define('Gorilla', {
   },
   //ゴリラが腕をふりかぶる
   holdArm: function() {
+    this.state = 1; //action中
     //ゴリラの画像をかえる
   },
   //ゴリラが腕を振り下ろす
