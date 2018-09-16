@@ -45,10 +45,6 @@ phina.define('Gorilla', {
     })
     .wait(30)
     .call(function(){
-      this.swingDownArm();
-    })
-    .wait(30)
-    .call(function(){
       toNormalState();
     });
   },
