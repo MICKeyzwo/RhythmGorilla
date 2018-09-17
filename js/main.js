@@ -17,6 +17,13 @@ phina.define('MainScene', {
     this.backgroundColor = '#444';
     this.gorilla = Gorilla().addChildTo(this);
   },
+  //毎フレーム実行されるメソッド
+  update: function(app) {
+    var key = app.keyboard;
+    if (key.getKeyDown('enter')) {
+      //エンターキーが押されたときのアクションをここに書く
+    }
+  },
 });
 
 phina.define('Gorilla', {
