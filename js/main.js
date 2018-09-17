@@ -52,21 +52,17 @@ phina.define('Gorilla', {
     })
     .wait(30)
     .call(function(){
-      this.swingDownArm();
-    })
-    .wait(30)
-    .call(function(){
       toNormalState();
     });
   },
   //ゴリラが腕をふりかぶる
   holdArm: function() {
     this.state = 1; //action中
-    //ゴリラの画像をかえる
+    //ゴリラの画像を変更
   },
   //ゴリラが腕を振り下ろす
   swingDownArm: function() {
-    //ゴリラの画像を帰る
+    //ゴリラの画像を変更
   },
   toNormalState: function() {
     this.state = 0; //通常状態にもどる
