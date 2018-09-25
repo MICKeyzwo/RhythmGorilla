@@ -8,6 +8,35 @@ var ASSETS = {
 var SCREEN_WIDTH = 640;
 var SCREEN_HEIGHT = 380;
 
+// TitleScene クラスを定義
+phina.define('TitleScene', {
+  superClass: 'DisplayScene',
+  // コンストラクタ
+  init: function() {
+    this.superInit();
+    Sprite('gorilla',300,300).addChildTo(this).setPosition(this.gridX.center(),200)
+    Label({
+      text:'ゴリラ天国',
+      fontSize:64,
+      stroke:'brack',
+      fill:'white',
+    }).addChildTo(this).setPosition(this.gridX.center(), this.gridY.span(1));
+    Label({
+      text:"TOUCH START",
+      fontSize:32,
+      stroke:'brack',
+      fill:'white',
+    }).addChildTo(this)
+      .setPosition(this.gridX.center(), this.gridY.span(5))
+      .tweener.fadeOut(1000).fadeIn(500).setLoop(true).play();
+    // 画面タッチ時
+    this.on('pointend', function() {
+      // 次のシーンへ
+      this.exit();
+    });
+  },
+});
+
 // MainScene クラスを定義
 phina.define('MainScene', {
   superClass: 'DisplayScene',
@@ -66,6 +95,24 @@ phina.define('Gorilla', {
   },
   toNormalState: function() {
     this.state = 0; //通常状態にもどる
+  }
+});
+
+// ノーツクラスを定義
+phina.define('Notes',{
+  superClass: 'Sprite',
+  init: function(){
+    this.superInit();
+    var speed = 10;
+    this.x = 0;
+    this.y = 0;
+    this.width = 100;
+    this.height = 100;
+    this.physical.velocity.x = -speed;
+  },
+  // 判定を受け取ってノーツごとのアクション
+  // 各ノーツクラスでオーバーライド
+  doAction: function(dec){
   }
 });
 
