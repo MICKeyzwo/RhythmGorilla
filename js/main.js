@@ -25,6 +25,8 @@ phina.define('MainScene', {
     var key = app.keyboard;
     if (key.getKeyDown('enter')) {
       //エンターキーが押されたときのアクションをここに書く
+      //デバック用
+      this.gorilla.action();
     }
   },
 });
@@ -32,7 +34,7 @@ phina.define('MainScene', {
 phina.define('Gorilla', {
   superClass: 'Sprite',
   init: function() {
-    this.superInit('gorilla', 250, 250);
+    this.superInit('gorilla_default1', 250, 250);
     this.x = SCREEN_WIDTH / 2;
     this.y = SCREEN_HEIGHT / 2;
     this.state = 0;//　0:通常状態 1:アクション中
@@ -45,30 +47,35 @@ phina.define('Gorilla', {
   },
   //エンターキーが押されたときに呼ぶ
   action: function() {
-    this.tweener
+    self = this;
+    this.tweener.clear()
     .call(function(){
-      this.holdArm();
+      self.holdArm();
     })
     .wait(30)
     .call(function(){
-      this.swingDownArm();
+      self.swingDownArm();
     })
-    .wait(30)
+    .wait(60)
     .call(function(){
-      toNormalState();
-    });
+      self.toNormalState();
+    })
+    .play();
   },
   //ゴリラが腕をふりかぶる
   holdArm: function() {
     this.state = 1; //action中
     //ゴリラの画像を変更
+    this.setImage('gorilla_armup', 250, 250);
   },
   //ゴリラが腕を振り下ろす
   swingDownArm: function() {
     //ゴリラの画像を変更
+    this.setImage('gorilla_armdown', 250, 250);
   },
   toNormalState: function() {
     this.state = 0; //通常状態にもどる
+    this.setImage('gorilla_default1', 250, 250);
   }
 });
 
