@@ -2,7 +2,10 @@
 phina.globalize();
 var ASSETS = {
   image: {
-    gorilla: './img/character_gorilla_hardboiled.png',
+    gorilla_default1: '../img/gorilla/protogori_default1.png',
+    gorilla_default2: '../img/gorilla/protogori_default2.png',
+    gorilla_armup: '../img/gorilla/protogori_armup.png',
+    gorilla_armdown: '../img/gorilla/protogori_armdown.png',
   }
 }
 var SCREEN_WIDTH = 640;
