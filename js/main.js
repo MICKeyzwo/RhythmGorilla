@@ -2,6 +2,7 @@
 phina.globalize();
 var ASSETS = {
   image: {
+    gorilla_title: './img/character_gorilla_hardboiled.png',
     gorilla_default1: './img/gorilla/protogori_default1.png',
     gorilla_default2: './img/gorilla/protogori_default2.png',
     gorilla_armup: './img/gorilla/protogori_armup.png',
@@ -42,7 +43,7 @@ phina.define('TitleScene', {
   // コンストラクタ
   init: function() {
     this.superInit();
-    Sprite('gorilla',300,300).addChildTo(this).setPosition(this.gridX.center(),200)
+    Sprite('gorilla_title',300,300).addChildTo(this).setPosition(this.gridX.center(),200)
     Label({
       text:'ゴリラ天国',
       fontSize:64,
@@ -186,7 +187,7 @@ phina.define('Honsha',{
     this.x = 500;
     this.y = 200;
     // スプライト画像作成
-    var sprite = Sprite('explosion', 128, 120).addChildTo(this);    
+    var sprite = Sprite('explosion', 128, 120).addChildTo(this);
     // スプライトにフレームアニメーションをアタッチ
     this.anim = FrameAnimation('explosion_ss').attachTo(sprite);
   },
