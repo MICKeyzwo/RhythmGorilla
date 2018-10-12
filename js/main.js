@@ -39,7 +39,7 @@ var SCREEN_HEIGHT = 380;
 
   // phina.js をグローバル領域に展開
   await splitter.globalizePhina();
-  await splitter.prefix("./js/")
+  await splitter.prefix("./js/");
   await splitter.load([
     "media-loader.js",
     "score-manager.js"
@@ -48,7 +48,8 @@ var SCREEN_HEIGHT = 380;
     "main-scene.js",
     "title-scene.js",
     "gorilla.js",
-    "notes.js"
+    "notes.js",
+    "result-scene.js"
   ]);
   await splitter.prefix("./score/");
   await splitter.load("score1.js");
