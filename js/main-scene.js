@@ -7,11 +7,15 @@ phina.define('MainScene', {
       this.backgroundColor = '#444';
       // ゴリラ作成
       this.gorilla = Gorilla().addChildTo(this);
-      // 缶ノーツ作成
-      this.can = Can().addChildTo(this);
-      // 本社ノーツ作成
-      this.honsha = Honsha().addChildTo(this);
 
+      // 以下二つのインスタンスにはデバック用の位置値を入れてあるので注意
+
+      // 缶ノーツ作成
+      this.can = Can(150,200).addChildTo(this);
+      // 本社ノーツ作成
+      this.honsha = Honsha(500,200).addChildTo(this);
+
+      // デバック用
       var self = this;
       this.can.onpointstart = function(){
         self.can.doAction(true);
@@ -49,11 +53,11 @@ phina.define('MainScene', {
         //デバック用
         this.gorilla.action();
       }
-      this.notes.forEach((item) => {
-        item.x -= 30;
-        // if(this.song.audio.currentTime == item.timing) {
-        //
-        // }
-      });
+
+      //デバック用
+      // Aが押されたときresult画面へ
+      if (key.getKeyDown('A')) {
+        this.exit();
+      }
     },
   });
