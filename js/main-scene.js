@@ -23,7 +23,30 @@ phina.define('MainScene', {
       this.honsha.onpointstart = function(){
         self.honsha.doAction(true);
       }
-      
+      this.noteSpeed = 7;
+      this.notes = [];
+      scoreManager.load("score1").then((data) => {
+        this.song = data;
+        this.song.audio.play();
+        data.score.forEach((item) => {
+          //これを変えると上手くいかない
+          notePositionX = (item.time/33.647)*this.noteSpeed + 30 + this.gorilla.x;
+          notePositionY = 200;
+          //缶の場合
+          if(item.type == 1){
+            newCan = Can().addChildTo(this);
+            newCan.setPosition(notePositionX,notePositionY);
+            newCan.timing = item.time;
+            self.notes.push(newCan);
+          //本社の場合
+          }else if(item.type == 2){
+            newHonsha = Honsha().addChildTo(this);
+            newHonsha.setPosition(notePositionX,notePositionY);
+            newHonsha.timing = item.time;
+            self.notes.push(newHonsha);
+          }
+        });
+      });
     },
     //毎フレーム実行されるメソッド
     update: function(app) {
@@ -33,7 +56,14 @@ phina.define('MainScene', {
         //デバック用
         this.gorilla.action();
       }
-
+      this.notes.forEach((item)=>{
+        item.x -= this.noteSpeed;
+        var duration = 30;
+        if(Math.abs(this.song.audio.currentTime*1000 - item.timing) < duration){
+          console.log(item.x);
+          item.doAction(true);
+        }
+      });
       //デバック用
       // Aが押されたときresult画面へ
       if (key.getKeyDown('A')) {
@@ -41,4 +71,3 @@ phina.define('MainScene', {
       }
     },
   });
-  
