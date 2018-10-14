@@ -30,17 +30,17 @@ phina.define('MainScene', {
         this.song.audio.play();
         data.score.forEach((item) => {
           //これを変えると上手くいかない
-          notePositionX = (item.time/33.647)*this.noteSpeed + 30 + this.gorilla.x;
-          notePositionY = 200;
+          var notePositionX = (item.time / 1000) * (SCREEN_WIDTH - this.gorilla.x);
+          var notePositionY = 200;
           //缶の場合
           if(item.type == 1){
-            newCan = Can().addChildTo(this);
+            var newCan = Can().addChildTo(this);
             newCan.setPosition(notePositionX,notePositionY);
             newCan.timing = item.time;
             self.notes.push(newCan);
           //本社の場合
           }else if(item.type == 2){
-            newHonsha = Honsha().addChildTo(this);
+            var newHonsha = Honsha().addChildTo(this);
             newHonsha.setPosition(notePositionX,notePositionY);
             newHonsha.timing = item.time;
             self.notes.push(newHonsha);
@@ -56,11 +56,14 @@ phina.define('MainScene', {
         //デバック用
         this.gorilla.action();
       }
-      this.notes.forEach((item)=>{
-        item.x -= this.noteSpeed;
+      this.notes.forEach((item, idx)=>{
+        const now = this.song.audio.currentTime * 1000;
+        //console.log(now);
+        item.x = ((item.timing - now) / 1000) * 200 + this.gorilla.x;
+        //if (idx == 0) console.log(item.x);
         var duration = 30;
-        if(Math.abs(this.song.audio.currentTime*1000 - item.timing) < duration){
-          console.log(item.x);
+        if(Math.abs(now - item.timing) < duration){
+          //console.log(item.x);
           item.doAction(true);
         }
       });
