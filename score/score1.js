@@ -1,9 +1,9 @@
 scoreManager.add({
     title: "score1",
     song: "ゴリラ天国.mp3",
-    bpm: 90.66,
+    bpm: 90.67,
     measure: "4/4",
-    delay: 0,
+    delay: 20,
     score: [
 
         "0",
