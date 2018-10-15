@@ -4,7 +4,7 @@ phina.define('Gorilla', {
     superClass: 'Sprite',
     init: function() {
       this.superInit('gorilla_default1', 250, 250);
-      this.x = SCREEN_WIDTH / 2;
+      this.x = SCREEN_WIDTH / 2 - 120;
       this.y = SCREEN_HEIGHT / 2;
       this.state = 0;//　0:通常状態 1:アクション中
     },
