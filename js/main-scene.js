@@ -39,9 +39,11 @@ phina.define('MainScene', {
       this.notes.forEach((item)=>{
         const now = this.song.audio.currentTime * 1000;
         item.x = ((item.timing - now) / 1000) * 200 + this.gorilla.x;
-        var duration = 60;
+        var duration = 100;
         if (key.getKeyDown('enter')) {
-          if(Math.abs(now - item.timing) < duration){
+          var timingDiff = duration - Math.abs(item.timing - (now + duration/2));
+          if(timingDiff >= 0){
+            console.log(timingDiff);
             item.doAction(true);
           }
         }
