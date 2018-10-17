@@ -17,6 +17,7 @@ phina.define('Gorilla', {
     //エンターキーが押されたときに呼ぶ
     action: function() {
       self = this;
+      sound_swing.cloneNode().play();
       this.tweener.clear()
       .call(function(){
         self.holdArm();
