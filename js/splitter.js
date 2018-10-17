@@ -2,7 +2,7 @@ const splitter = {};
 (_ => {
     splitter.globalizePhina = _ => new Promise((res, rej) => {
         const script = document.createElement("script");
-        script.src = "http://cdn.rawgit.com/phi-jp/phina.js/v0.2.0/build/phina.js";
+        script.src = "https://cdn.rawgit.com/phi-jp/phina.js/v0.2.0/build/phina.js";
         document.querySelector("head").appendChild(script);
         script.addEventListener("load", () => {
             phina.globalize();
