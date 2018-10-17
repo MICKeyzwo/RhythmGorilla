@@ -45,7 +45,6 @@ phina.define('MainScene', {
           if(timingDiff >= 0){
             console.log(timingDiff);
             item.doAction(true);
-            sound_bomb.cloneNode().play();
           }
         }
       });

@@ -25,6 +25,7 @@ phina.define('Can',{
   doAction: function(dec){
     if(dec){
       this.setImage('gomi', 100, 100);
+      sound_bomb.cloneNode().play();
     }
   }
 });
@@ -51,6 +52,7 @@ phina.define('Honsha',{
       sprite.alpha = 1; // スプライトシートを可視化
       sprite.setPosition(sprite.x, sprite.y).setScale(8.0, 8.0);
       fire.gotoAndPlay('explosion'); // 爆破！ｗ
+      sound_bomb.cloneNode().play();
     }
   },
   update: function() {
