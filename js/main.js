@@ -7,10 +7,11 @@ var ASSETS = {
     gorilla_armdown: './img/gorilla/gori_armdown.png',
     arm_swingdown: './img/gorilla/arm_swingdown.png',
     fist: './img/gorilla/fist.png',
-    bom: './img/bom.png',
+    bom: './img/honsha.png',
+    sold: './img/sold.png',
     explosion: './img/explosion.png',
-    can: './img/can.png',
-    gomi: './img/gomi.png',
+    can: './img/can2.png',
+    gomi: './img/gomi2.png',
     background: './img/background.png',
     conveyor: './img/conveyor.png'
   },
@@ -38,7 +39,8 @@ var ASSETS = {
 
 var SCREEN_WIDTH = 640;
 var SCREEN_HEIGHT = 380;
-var sound_bomb,sound_swing;
+var sound_can,sound_honsha, sound_swing;
+var gamePoints = 0;
 (async _ => {
 
   // phina.js をグローバル領域に展開
@@ -57,7 +59,8 @@ var sound_bomb,sound_swing;
   ]);
   await splitter.prefix("./score/");
   await splitter.load("score1.js");
-  sound_bomb = await mediaLoader.loadAudio('./sounds/bomb.mp3');
+  sound_can = await mediaLoader.loadAudio('./sounds/can.mp3');
+  sound_honsha = await mediaLoader.loadAudio('./sounds/honsha.mp3');
   sound_swing = await mediaLoader.loadAudio('./sounds/karaburi.mp3');
 
   // メイン処理
