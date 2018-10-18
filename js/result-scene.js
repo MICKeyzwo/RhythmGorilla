@@ -4,6 +4,13 @@ phina.define("ResultScene", {
     init: function() {
       this.superInit();
       Label({
+        text:"SCORE: " + gamePoints,
+        fontSize:64,
+        stroke:'brack',
+        fill:'white',
+      }).addChildTo(this)
+        .setPosition(this.gridX.center(), this.gridY.span(2));
+      Label({
         text:"ENTER RE:START",
         fontSize:32,
         stroke:'brack',
@@ -22,4 +29,3 @@ phina.define("ResultScene", {
         }
       },
   });
-  

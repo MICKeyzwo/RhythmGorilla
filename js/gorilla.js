@@ -6,8 +6,8 @@ phina.define('Gorilla', {
       this.sizeX = 460;
       this.sizeY = 360
       this.superInit('gorilla_default1', this.sizeX, this.sizeY);
-      this.x = SCREEN_WIDTH / 2 - 50;
-      this.y = SCREEN_HEIGHT / 2 + 20;
+      this.x = SCREEN_WIDTH / 2;
+      this.y = SCREEN_HEIGHT / 2 + 30;
       this.state = 0;//　0:通常状態 1:アクション中
       this.arm = Sprite("arm_swingdown", this.sizeX - 90, this.sizeY - 70).addChildTo(self.armLayer);
       this.arm.x = this.x - 90;
@@ -34,7 +34,7 @@ phina.define('Gorilla', {
       .call(function(){
         self.holdArm();
       })
-      .wait(50)
+      .wait(60)
       .call(function(){
         self.arm.alpha = 1;
         self.fist.alpha = 0;

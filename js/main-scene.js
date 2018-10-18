@@ -13,6 +13,7 @@ phina.define('MainScene', {
       this.background = Sprite("background", SCREEN_WIDTH, SCREEN_HEIGHT).addChildTo(this.backLayer);
       this.background.x = SCREEN_WIDTH/2;
       this.background.y = SCREEN_HEIGHT/2;
+      this.points = 0;
       // ゴリラ作成
       this.gorilla = Gorilla(this).addChildTo(this.backLayer);
       this.judgePositionX = this.gorilla.x - 90;
@@ -27,7 +28,7 @@ phina.define('MainScene', {
         this.song.audio.play();
         data.score.forEach((item) => {
           var notePositionX = (item.time / 1000) * (SCREEN_WIDTH - this.gorilla.x);
-          var notePositionY = 300;
+          var notePositionY = 302;
           //缶の場合
           if(item.type == 1){
             var newCan = Can(notePositionX, notePositionY).addChildTo(this.notesLayer);
@@ -51,11 +52,12 @@ phina.define('MainScene', {
       this.notes.forEach((item)=>{
         const now = this.song.audio.currentTime * 1000;
         item.x = ((item.timing - now) / 1000) * 200 + this.judgePositionX;
-        var duration = 220;
+        var duration = 170;
         if (key.getKeyDown('enter')) {
           var timingDiff = duration - Math.abs(item.timing - (now + duration/2));
           if(timingDiff >= 0){
-            console.log(timingDiff);
+            gamePoints += item.point;
+            console.log(gamePoints);
             item.doAction(true);
           }
         }
