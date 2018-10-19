@@ -25,6 +25,7 @@ phina.define('MainScene', {
       this.notes = [];
       scoreManager.load("score1").then((data) => {
         this.song = data;
+        console.log(data);
         this.song.audio.play();
         data.score.forEach((item) => {
           var notePositionX = (item.time / 1000) * (SCREEN_WIDTH - this.gorilla.x);
@@ -62,6 +63,10 @@ phina.define('MainScene', {
           }
         }
       });
+      console.log(this.song.audio.ended);
+      if(this.song.audio.ended){
+        this.exit();
+      }
       //デバック用
       // Aが押されたときresult画面へ
       if (key.getKeyDown('A')) {

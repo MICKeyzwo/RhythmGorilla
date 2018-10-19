@@ -25,6 +25,7 @@ phina.define("ResultScene", {
         // エンターキーが押されたとき次の画面へ移動
         if (key.getKeyDown('enter')) {
           // 次のシーンへ
+          gamePoints = 0;
           this.exit();
         }
       },
