@@ -59,9 +59,10 @@ var gamePoints = 0;
   ]);
   await splitter.prefix("./score/");
   await splitter.load("score1.js");
-  sound_can = await mediaLoader.loadAudio('./sounds/can.mp3');
-  sound_honsha = await mediaLoader.loadAudio('./sounds/honsha.mp3');
-  sound_swing = await mediaLoader.loadAudio('./sounds/karaburi.mp3');
+  await mediaLoader.prefix("./sounds/");
+  [sound_can, sound_honsha, sound_swing] = await mediaLoader.loadAudio([
+    'can.mp3', 'honsha.mp3', 'karaburi.mp3'
+  ]);
 
   // メイン処理
   phina.main(function () {

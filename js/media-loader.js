@@ -2,12 +2,13 @@ const mediaLoader = (_ => {
     const Video = function () {
         return document.createElement("video");
     };
+    let prefixStr = "";
     const loadSingle = (src, T) => new Promise((res, rej) => {
         const data = new T();
         const loadFlg = T == Image ? "load" : "loadstart";
         data.addEventListener(loadFlg, _ => res(data));
         data.addEventListener("error", _ => rej(new Error("media loading failed!")));
-        data.src = src;
+        data.src = prefixStr + src;
     });
     const loadMulti = (srcs, T) => {
         const promises = [];
@@ -18,7 +19,7 @@ const mediaLoader = (_ => {
                 res(arr.reduce((obj, val, idx) => {
                     obj[keys[idx]] = val;
                     return obj;
-                }, {}));
+                }, Array.isArray(srcs) ? [] : {}));
             }).catch(_ => {
                 rej(new Error("media loading failed!"));
             });
@@ -29,6 +30,11 @@ const mediaLoader = (_ => {
         if (typeof src == "object") return loadMulti(src, T);
     };
     return {
+        prefix: async str => {
+            if (!str) return prefixStr;
+            prefixStr = str;
+            return prefixStr;
+        },
         loadImage: src => switcher(src, Image),
         loadAudio: src => switcher(src, Audio),
         loadVideo: src => switcher(src, Video),
@@ -46,7 +52,7 @@ const mediaLoader = (_ => {
                     res(arr.reduce((obj, val, idx) => {
                         obj[keys[idx]] = val;
                         return obj;
-                    }, {}));
+                    }, Array.isArray(srcs) ? [] : {}));
                 }).catch(_ => {
                     rej(new Error("media loading failed!"));
                 });
